@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paycheck Details</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+    }
+    .container {
+        width: 50%;
+        margin: 20px auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 30px;
+    }
+    .details table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .details table tr td {
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+        color: #555;
+    }
+    .details table tr:last-child td {
+        border-bottom: none;
+    }
+    .details table tr td:first-child {
+        font-weight: bold;
+    }
+    .details table tr td:last-child {
+        text-align: right;
+    }
+    .highlight {
+        background-color: #ffecb3;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Paycheck Details</h1>
+    <div class="details">
+        <table>
+            <tr>
+                <td>Employee Name:</td>
+                <td id="employeeName">[NAME]</td>
+            </tr>
+            <tr>
+                <td>Rate of Pay:</td>
+                <td id="rateOfPay">$[RATE OF PAY]/hour</td>
+            </tr>
+            <tr>
+                <td>Hours Worked:</td>
+                <td id="hoursWorked">[HOURS WORKED] hrs</td>
+            </tr>
+            <tr>
+                <td>Total Earnings:</td>
+                <td class="highlight">$<span id="totalEarnings">[TOTAL EARNINGS]</span></td>
+            </tr>
+            <tr>
+                <td>Tax (14%):</td>
+                <td class="highlight">$<span id="taxAmount">[TAX AMOUNT]</span></td>
+            </tr>
+            <tr>
+                <td>Net Earnings:</td>
+                <td class="highlight">$<span id="netEarnings">[NET EARNINGS]</span></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    // Replace placeholders with actual data
+    var employeeName = "John Doe";
+    var rateOfPay = 15; // Rate of pay per hour
+    var hoursWorked = 40; // Number of hours worked
+
+    document.getElementById("employeeName").innerText = employeeName;
+    document.getElementById("rateOfPay").innerText = "$" + rateOfPay + "/hour";
+    document.getElementById("hoursWorked").innerText = hoursWorked + " hrs";
+    
+    // Calculate total earnings
+    var totalEarnings = rateOfPay * hoursWorked;
+    document.getElementById("totalEarnings").innerText = totalEarnings.toFixed(2);
+
+    // Calculate tax amount (14%)
+    var taxRate = 0.14;
+    var taxAmount = totalEarnings * taxRate;
+    document.getElementById("taxAmount").innerText = taxAmount.toFixed(2);
+
+    // Calculate net earnings
+    var netEarnings = totalEarnings - taxAmount;
+    document.getElementById("netEarnings").innerText = netEarnings.toFixed(2);
+</script>
+
+</body>
+</html>
